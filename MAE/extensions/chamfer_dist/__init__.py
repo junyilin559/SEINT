@@ -8,7 +8,8 @@
 import torch
 from utils.wasserstein import sliced_wasserstein_batch,sliced_gw_batch
 import chamfer
-from utils.RIOT_batch import RIOT_sliced_batch
+from DiMOT.RIOT_numpy import *
+from DiMOT.RIOT_torch import *
 class ChamferFunction(torch.autograd.Function):
     @staticmethod
     def forward(ctx, xyz1, xyz2):
@@ -109,14 +110,7 @@ class CD2_fused_RIOT(torch.nn.Module):
         chamfer_loss = torch.mean(dist1) + torch.mean(dist2)
 
         if self.use_riot:
-            riot_loss = self.riot(xyz1, xyz2)/35#(35*2)            #/7000
-            #之前是rad 是3，sliced的时候是7000，现在设到自动调节以后不一样了
-            #发现riot是3都不对，之前调了sliced,没调max
-            #自动和不自动scale一样的
-            ######## 改了一版rand的，需要在35的基础再乘2
-            #减mean后恢复到35
-            # print('chamfer_loss',chamfer_loss)
-            # print('riot_loss',riot_loss)
+            riot_loss = self.riot(xyz1, xyz2)/(35*2)      
             return 0.9* chamfer_loss +  0.1 * riot_loss
         else:
             return chamfer_loss
