@@ -22,7 +22,7 @@ We integrate SEINT as a regularization term into the Point-MAE architecture for 
    - `extensions/chamfer_dist/`
    - `models/`
 
-3. The modifications incorporate SEINT regularization during training and evaluation.
+3. The modifications incorporate SEINT regularization during pretraining.
 
 4. Follow the original training and evaluation instructions in the Point-MAE repository.
 
