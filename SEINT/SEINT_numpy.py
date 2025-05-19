@@ -58,7 +58,9 @@ def SEINT(
         _, rep = np.shape(rd)
     if(set_seed != None):
         rng = np.random.default_rng(set_seed)
-    rd = rng.uniform(0, rd_rad, size=(n, rep))
+        rd = rng.uniform(0, rd_rad, size=(n, rep))
+    else:
+        rd = rd_rad * np.random.rand(n, rep)
     for k in range(rep):
         # npoints = rd_rad * np.random.rand(n)
         length1 = get_ptd(X_plength, rd[:, k])
@@ -71,13 +73,17 @@ def SEINT(
     if(acc):
         X_plength2 = X_plength**2
         Y_plength2 = Y_plength**2
-        X2 = -2*Xn @ (Xn.T @ X1) + np.outer(X_plength2 , np.ones(len(X_plength2)) @ X1) + np.outer(np.ones(len(X_plength2)), X_plength2 @ X1)
-        Y2 = -2*Yn @ (Yn.T @ Y1) + np.outer(Y_plength2 , np.ones(len(Y_plength2)) @ Y1) + np.outer(np.ones(len(Y_plength2)), Y_plength2 @ Y1)
+        X_dist_scale = (-2 * (Xn.sum(axis = 0)**2).sum() + 2*n*X_plength2.sum())/n/n
+        Y_dist_scale = (-2 * (Yn.sum(axis = 0)**2).sum() + 2*m*Y_plength2.sum())/m/m
+        X2 = -2*Xn @ (Xn.T @ X1) + np.outer(X_plength2 , np.ones(n) @ X1) + np.outer(np.ones(n), X_plength2 @ X1)
+        Y2 = -2*Yn @ (Yn.T @ Y1) + np.outer(Y_plength2 , np.ones(m) @ Y1) + np.outer(np.ones(m), Y_plength2 @ Y1)
+        X2 = X2 / X_dist_scale
+        Y2 = Y2 / Y_dist_scale
     else:
         X_dist = sp.spatial.distance.cdist(Xn, Xn, metric='minkowski', p = lp)**lp
         Y_dist = sp.spatial.distance.cdist(Yn, Yn, metric='minkowski', p = lp)**lp
-        # X_dist = X_dist / X_dist.std()
-        # Y_dist = Y_dist / Y_dist.std()
+        X_dist = X_dist / X_dist.mean()
+        Y_dist = Y_dist / Y_dist.mean()
         # ttfeature
         X2 = X_dist @ X1
         Y2 = Y_dist @ Y1
@@ -88,7 +94,6 @@ def SEINT(
     if(maxed):
         loss_list = np.mean((X2 - Y2) ** 2,axis=0)
         loss = np.max(loss_list)
-        return loss
     else:
         loss = np.mean(np.mean((X2 - Y2) ** 2,axis=0))
     
