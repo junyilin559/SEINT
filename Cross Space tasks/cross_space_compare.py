@@ -17,29 +17,22 @@ def rotation_matrix_x(theta):
                      [0, np.cos(theta), -np.sin(theta)],
                      [0, np.sin(theta), np.cos(theta)]])
 
-# 计算绕y轴旋转的矩阵
 def rotation_matrix_y(theta):
     return np.array([[np.cos(theta), 0, np.sin(theta)],
                      [0, 1, 0],
                      [-np.sin(theta), 0, np.cos(theta)]])
 
-# 计算绕z轴旋转的矩阵
 def rotation_matrix_z(theta):
     return np.array([[np.cos(theta), -np.sin(theta), 0],
                      [np.sin(theta), np.cos(theta), 0],
                      [0, 0, 1]])
 
-# 组合三维旋转
 def rotate_vector(v, theta_x, theta_y, theta_z):
-    # 计算绕x, y, z轴的旋转矩阵
     Rx = rotation_matrix_x(theta_x)
     Ry = rotation_matrix_y(theta_y)
     Rz = rotation_matrix_z(theta_z)
-    
-    # 总的旋转矩阵是三个旋转矩阵的乘积
     R = np.dot(Rz, np.dot(Ry, Rx))
     
-    # 旋转向量
     return np.dot(v, R)
 
 filename = "data/models/horse-gallop/horse-gallop-reference.obj"
