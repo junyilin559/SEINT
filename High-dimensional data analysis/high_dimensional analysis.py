@@ -210,15 +210,7 @@ ax_b.set_ylabel(r'$\log_{10}(Time)$',fontsize=size)
 ax_b.set_title('(b)',fontsize=size)
 ax_b.grid(True, linestyle=':', linewidth=0.6)
 
-# -------------------------------------------------
-METHODS = {
-    "GW":     GW,
-    "RISGW":      RISGW,
-    "SINKHORN":        sinkhorn,
-    "EMD": emd,
-    "SEINT":         SEINT_Func,
-    "ISEINT":  ISEINT_Func,
-}
+
 method_order = ["GW", "RISGW", "Sinkhorn", "EMD", "SEINT", "ISEINT"]
 idx_map = {m: i for i, m in enumerate(method_order)}
 proposed = ["SEINT", "ISEINT"]
