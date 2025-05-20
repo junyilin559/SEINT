@@ -115,7 +115,6 @@ q = ot.unif(len(reference))
 reg = 5 * 1e-3
 
 
-print(1)
 Loss_gw = np.zeros([4, 48])
 Loss_egw = np.zeros([4, 48])
 
