@@ -21,9 +21,10 @@ Brief introduction to directories and files:
 * sklearn
 * pytorch >= 2.4.1
 * pandas
+* POT
 
 
-## Applying SEINT as a Regularization Term in Molecular Generation and Point Cloud Reconstruction
+## Applying SEINT as a Regularization Term
 
 This project demonstrates the application of **SEINT** as a regularization term in two generative tasks: **point cloud reconstruction** and **molecular generation**. The modifications are based on the following open-source repositories:
 
