@@ -78,19 +78,23 @@ def SEINT_torch(
     if(acc):
         X_plength2 = plengthX**2
         Y_plength2 = plengthY**2
+        X_dist_scale = (-2 * (Xn.sum(dim = 0)**2).sum() + 2*n*X_plength2.sum())/n/n
+        Y_dist_scale = (-2 * (Yn.sum(dim = 0)**2).sum() + 2*m*Y_plength2.sum())/m/m
         X2 = -2 * torch.matmul(Xn, torch.matmul(Xn.T, X1)) + torch.outer(X_plength2, torch.matmul(torch.ones(n, device=device), X1)) + torch.outer(torch.ones(n, device=device), torch.matmul(X_plength2, X1))
         Y2 = -2 * torch.matmul(Yn, torch.matmul(Yn.T, Y1)) + torch.outer(Y_plength2, torch.matmul(torch.ones(m, device=device), Y1)) + torch.outer(torch.ones(m, device=device), torch.matmul(Y_plength2, Y1))
+        X2 = X2 / X_dist_scale
+        Y2 = Y2 / Y_dist_scale
     else:
         X_dist = torch.cdist(Xn, Xn, p=lp)**lp
         Y_dist = torch.cdist(Yn, Yn, p=lp)**lp
-        # X_dist = X_dist / X_dist.std() # (optional) additional normalization
-        # Y_dist = Y_dist / Y_dist.std()
+        # X_dist = X_dist / X_dist.mean() # (optional) additional normalization
+        # Y_dist = Y_dist / Y_dist.mean()
         X2 = X_dist @ X1
         Y2 = Y_dist @ Y1
             
     # Loss calculation
-    X2 = torch.sort(X2, dim=0)[0]/X1.mean(axis=0)
-    Y2 = torch.sort(Y2, dim=0)[0]/Y1.mean(axis=0)
+    X2 = torch.sort(X2, dim=0)[0]/X1.mean(dim=0)
+    Y2 = torch.sort(Y2, dim=0)[0]/Y1.mean(dim=0)
     if(maxed):
         loss = torch.max(torch.sum((X2 - Y2) ** 2,dim=0))
     else:
