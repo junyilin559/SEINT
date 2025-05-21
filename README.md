@@ -71,15 +71,15 @@ We integrate SEINT as a regularization term into the Point-MAE architecture for 
 4. Follow the original training and evaluation instructions in the Point-MAE repository.
 
 ## Main References
-Hoogeboom, Emiel and Satorras, Victor Garcia and Vignac, Clement and Welling, Max "Equivariant diffusion for molecule generation in 3d." International conference on machine learning. PMLR, 2022. [\[Git\]](https://github.com/ehoogeboom/e3_diffusion_for_molecules)
+Hoogeboom Emiel, Satorras Vïctor Garcia, Vignac Clément and Welling Max. "Equivariant diffusion for molecule generation in 3d." International conference on machine learning. PMLR, 2022. [\[Git\]](https://github.com/ehoogeboom/e3_diffusion_for_molecules)
 
-Pang, Yatian and Wang, Wenxiao and Tay, Francis EH and Liu, Wei and Tian, Yonghong and Yuan, Li. "Masked autoencoders for point cloud self-supervised learning." European conference on computer vision. Cham: Springer Nature Switzerland, 2022. [\[Git\]](https://github.com/Pang-Yatian/Point-MAE)
+Pang Yatian, Wang Wenxiao, Tay Francis EH, Liu Wei, Tian Yonghong and Yuan Li. "Masked autoencoders for point cloud self-supervised learning." European conference on computer vision. Cham: Springer Nature Switzerland, 2022. [\[Git\]](https://github.com/Pang-Yatian/Point-MAE)
 
 Rémi Flamary, Nicolas Courty, Alexandre Gramfort, Mokhtar Z. Alaya, Aurélie Boisbunon, Stanislas Chambon, Laetitia Chapel, Adrien Corenflos, Kilian Fatras, Nemo Fournier, Léo Gautheron, Nathalie T.H. Gayraud, Hicham Janati, Alain Rakotomamonjy, Ievgen Redko, Antoine Rolet, Antony Schutz, Vivien Seguy, Danica J. Sutherland, Romain Tavenard, Alexander Tong, and Titouan Vayer. "POT Python Optimal Transport library." Journal of Machine Learning Research 22(78): 1-8, 2021. [\[Web\]](https://pythonot.github.io/)
 
 Scetbon, Meyer, Gabriel Peyré, and Marco Cuturi. "Linear-time Gromov Wasserstein distances using low rank couplings and costs." International Conference on Machine Learning. PMLR, 2022. [\[Git\]](https://github.com/meyerscetbon/LinearGromov)
 
-Vayer, Titouan and Flamary, Remi and Tavenard, Romain and Chapel, Laetitia and Courty, Nicolas "Sliced Gromov-Wasserstein." NeurIPS 2019-Thirty-third Conference on Neural Information Processing Systems. Vol. 32. 2019. [\[Git\]](https://github.com/tvayer/SGW)
+Vayer Titouan, Flamary Rémi, Tavenard Romain, Chapel Laetitia and Courty Nicolas. "Sliced Gromov-Wasserstein." NeurIPS 2019-Thirty-third Conference on Neural Information Processing Systems. Vol. 32. 2019. [\[Git\]](https://github.com/tvayer/SGW)
 
 
 
