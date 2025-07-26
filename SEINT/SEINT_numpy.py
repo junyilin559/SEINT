@@ -51,7 +51,7 @@ def SEINT(
     vectors1 = []
     vectors2 = []
     if rd_rad == None:
-        rd_rad = (X_plength.mean() + Y_plength.mean() + X_plength.std() + X_plength.std())/2
+        rd_rad = (X_plength.mean() + Y_plength.mean() + X_plength.std() + Y_plength.std())/2
 
     # PTD calculation
     if(determin):
