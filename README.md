@@ -8,9 +8,10 @@ Brief introduction to directories and files:
    * `SE(p) invariance/`: Code for implementing point cloud classification tasks.
    * `Cross Space tasks/`: Code for implementing cross-space tasks.
    * `High-dimensional data analysis/`: Code for testing with high-dimensional data.
+   * `time_cost`: Code for testing computational efficiency
    * `Metric consistency/`: Code for metric consistency detection.
 * As a regularization term:
-   * `E3-diffusion/`: Core code for its use as a regularization term in E(3)-equivariant diffusion models.
+   * `Molecule_Generation/`: Core code for its use as a regularization term in E(3)-equivariant diffusion models.
    * `Point-MAE/`: Core code for its use as a regularization term in Point-MAE.
 
 ## Requirements
@@ -23,35 +24,66 @@ Brief introduction to directories and files:
 * pandas
 * POT
 
-
-## Applying SEINT as a Regularization Term
-
-This project demonstrates the application of **SEINT** as a regularization term in two generative tasks: **point cloud reconstruction** and **molecular generation**. The modifications are based on the following open-source repositories:
-
-- [E3 Diffusion for Molecules](https://github.com/ehoogeboom/e3_diffusion_for_molecules) for molecular generation
-- [Point-MAE](https://github.com/Pang-Yatian/Point-MAE) for point cloud reconstruction
-
 ---
 
-### 🔷 1. Molecular Generation with SEINT  
-**Base repository**: [ehoogeboom/e3_diffusion_for_molecules](https://github.com/ehoogeboom/e3_diffusion_for_molecules)
+## Main Experiments
+### SE(p) invariance
+   1. 
 
-We also introduce SEINT into the E(3)-equivariant diffusion model for molecular generation. To run experiments:
+### Cross Space tasks
+   1. Download the [Mesh Data from Deformation Transfer for Triangle Meshes](https://people.csail.mit.edu/sumner/research/deftransfer/data.html) and place it in the `Cross Space tasks/data/` directory.
+   2. Run the following script to compute the distance information:
+      ```bash
+      cd "Cross Space tasks"
+      python cross_space_compare.py
+      ```
+   3. Evaluate the results in the `Cross_Space.ipynb` notebook.
 
-1. Clone the original repository:
+### High-dimensional data analysis
+   1.
+
+### Computational Efficiency
+   1.
+
+### Molecular Generation
+**Backbone**: [EDM](https://github.com/ehoogeboom/e3_diffusion_for_molecules), [UniGEM](https://github.com/fengshikun/UniGEM)
+
+1. Navigate to the `Molecule_Generation` directory and clone the original backbone repositories. Then, follow their instructions to download the QM9 and Drug datasets.
    ```bash
+   cd Molecule_Generation
    git clone https://github.com/ehoogeboom/e3_diffusion_for_molecules.git
+   git clone https://github.com/fengshikun/UniGEM.git
    ```
 
-2. Replace the following file with the SEINT-modified version:
-   - `en_diffusion/en_diffusion.py`
+2. Replace the `en_diffusion/en_diffusion.py` file in the cloned EDM & UniGEM repository with the one provided in our `Molecule_Generation` directory.
 
-3. This updated file adds SEINT as an auxiliary regularization term during the diffusion process.
+3. To train EDM and UniGEM on the QM9 dataset, run the following script:
+   ```bash
+   bash SEINT_train_QM9.sh
+   ```
 
-4. Use the original training and sampling scripts for evaluation.
+4. To fine-tune UniGEM on the QM9 and DRUG datasets, first download the pre-trained checkpoints as instructed in the original [UniGEM](https://github.com/fengshikun/UniGEM) repository. Then, run the fine-tuning script:
+   ```bash
+   bash SEINT_ft_DRUG.sh
+   ```
+
+5.  To evaluate the trained models, run the corresponding scripts:
+    *   On the QM9 dataset:
+        ```bash
+        bash SEINT_eval_QM9.sh
+        ```
+    *   On the DRUG dataset:
+        ```bash
+        bash SEINT_eval_DRUG.sh
+        ```
+6.  We provide pre-trained checkpoints for evaluation with **SEINT-0.3** in the following directories: `Molecule_Generation/EDM_QM9_ckpt`, `Molecule_Generation/UniGEM_QM9_ft_ckpt`, and `Molecule_Generation/UniGEM_DRUG_ft_ckpt`. You are welcome to use these for testing and reproducing our results. Checkpoints for training will be released soon.
 ---
+## Additional Experiments
+### Metric consistency
+   1.  Download the [Mesh Data from Deformation Transfer for Triangle Meshes](https://people.csail.mit.edu/sumner/research/deftransfer/data.html), and place the `elephant-reference.obj`, `flam-reference.obj`, and `horse-01.obj` files into the `Metric consistency` directory.
+   2.  Run the experiments and view the results in the `Metric consistency/metric consistency.ipynb` notebook.
 
-### 🔷 2. Point Cloud Reconstruction with SEINT  
+### Point Cloud Reconstruction with SEINT  
 **Base repository**: [Pang-Yatian/Point-MAE](https://github.com/Pang-Yatian/Point-MAE)
 
 We integrate SEINT as a regularization term into the Point-MAE architecture for enhanced point cloud reconstruction performance. To test our implementation:
@@ -69,6 +101,7 @@ We integrate SEINT as a regularization term into the Point-MAE architecture for 
 3. The modifications incorporate SEINT regularization during pretraining.
 
 4. Follow the original training and evaluation instructions in the Point-MAE repository.
+---
 
 ## Main References
 Hoogeboom Emiel, Satorras Vïctor Garcia, Vignac Clément and Welling Max. "Equivariant diffusion for molecule generation in 3d." International conference on machine learning. PMLR, 2022. [\[Git\]](https://github.com/ehoogeboom/e3_diffusion_for_molecules)
@@ -80,6 +113,8 @@ Rémi Flamary, Nicolas Courty, Alexandre Gramfort, Mokhtar Z. Alaya, Aurélie Bo
 Scetbon, Meyer, Gabriel Peyré, and Marco Cuturi. "Linear-time Gromov Wasserstein distances using low rank couplings and costs." International Conference on Machine Learning. PMLR, 2022. [\[Git\]](https://github.com/meyerscetbon/LinearGromov)
 
 Vayer Titouan, Flamary Rémi, Tavenard Romain, Chapel Laetitia and Courty Nicolas. "Sliced Gromov-Wasserstein." NeurIPS 2019-Thirty-third Conference on Neural Information Processing Systems. Vol. 32. 2019. [\[Git\]](https://github.com/tvayer/SGW)
+
+Shikun Feng and Yuyan Ni and Lu yan and Zhi-Ming Ma and Wei-Ying Ma and Yanyan Lan. "UniGEM: A Unified Approach to Generation and Property Prediction for Molecules." The Thirteenth International Conference on Learning Representations. [\[Github\]](https://github.com/fengshikun/UniGEM)
 
 
 

@@ -1,6 +1,5 @@
 import numpy as np
 import scipy as sp
-from .numpy_utils import *
 
 def SEINT(
         X,
@@ -48,27 +47,30 @@ def SEINT(
 
     X_plength = np.linalg.norm(Xn, axis = 1, ord=lp)
     Y_plength = np.linalg.norm(Yn, axis = 1, ord=lp)
-    vectors1 = []
-    vectors2 = []
-    if rd_rad == None:
-        rd_rad = (X_plength.mean() + Y_plength.mean() + X_plength.std() + Y_plength.std())/2
 
-    # PTD calculation
+    if rd_rad == None:
+        rd_rad = (X_plength.mean() + Y_plength.mean() + X_plength.std() + X_plength.std())/2
+
     if(determin):
-        _, rep = np.shape(rd)
-    if(set_seed != None):
-        rng = np.random.default_rng(set_seed)
-        rd = rng.uniform(0, rd_rad, size=(n, rep))
+        # step = int(2*n / rep)
+        L = np.tril(np.ones((n, n), dtype=int))
+        rd = np.hstack([L + np.sort(X_plength)[:, None], L + np.sort(Y_plength)[:, None]])#[:, ::step]
+        
+        rep = rd.shape[1]
     else:
-        rd = rd_rad * np.random.rand(n, rep)
-    for k in range(rep):
-        # npoints = rd_rad * np.random.rand(n)
-        length1 = get_ptd(X_plength, rd[:, k])
-        length2 = get_ptd(Y_plength, rd[:, k])
-        vectors1.append(length1)
-        vectors2.append(length2)
-    X1 = np.vstack(vectors1).T
-    Y1 = np.vstack(vectors2).T
+        if(set_seed != None):
+            rng = np.random.default_rng(set_seed)
+            rd = rng.uniform(0, rd_rad, size=(n, rep))
+        else:
+            rd = rd_rad * np.random.rand(n, rep)
+
+    # t1 = time.time()
+    rd = np.sort(rd, axis = 0)
+    X1 = np.abs(rd - np.sort(X_plength)[:, None])[np.argsort(np.argsort(X_plength))]
+    Y1 = np.abs(rd - np.sort(Y_plength)[:, None])[np.argsort(np.argsort(Y_plength))]
+    # t2 = time.time()
+    # print(t2 - t1)
+    
 
     if(acc):
         X_plength2 = X_plength**2
@@ -88,6 +90,7 @@ def SEINT(
         X2 = X_dist @ X1
         Y2 = Y_dist @ Y1
 
+    # print(X2.shape)
     # Loss calculation
     X2 = np.sort(X2, axis=0)/X1.sum(axis=0)
     Y2 = np.sort(Y2, axis=0)/Y1.sum(axis=0)
