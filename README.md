@@ -28,7 +28,8 @@ Brief introduction to directories and files:
 
 ## Main Experiments
 ### SE(p) invariance
-   1. 
+   1. Evaluate the results in the `SEp_invariance.ipynb` notebook.
+      
 
 ### Cross Space tasks
    1. Download the [Mesh Data from Deformation Transfer for Triangle Meshes](https://people.csail.mit.edu/sumner/research/deftransfer/data.html) and place it in the `Cross Space tasks/data/` directory.
@@ -40,10 +41,10 @@ Brief introduction to directories and files:
    3. Evaluate the results in the `Cross_Space.ipynb` notebook.
 
 ### High-dimensional data analysis
-   1.
+   * Evaluate the results in the `High-dimensional_Analysis.ipynb` notebook.
 
 ### Computational Efficiency
-   1.
+   * Evaluate the results in the `Computational_Efficiency.ipynb` notebook.
 
 ### Molecular Generation
 **Backbone**: [EDM](https://github.com/ehoogeboom/e3_diffusion_for_molecules), [UniGEM](https://github.com/fengshikun/UniGEM)
@@ -76,7 +77,7 @@ Brief introduction to directories and files:
         ```bash
         bash SEINT_eval_DRUG.sh
         ```
-6.  We provide pre-trained checkpoints for evaluation with **SEINT-0.3** in the following directories: `Molecule_Generation/EDM_QM9_ckpt`, `Molecule_Generation/UniGEM_QM9_ft_ckpt`, and `Molecule_Generation/UniGEM_DRUG_ft_ckpt`. You are welcome to use these for testing and reproducing our results. Checkpoints for training will be released soon.
+6.  We provide pre-trained checkpoints for evaluation with **SEINT-0.3** in the following directories: `Molecule_Generation/EDM_QM9_ckpt`, `Molecule_Generation/UniGEM_QM9_ckpt`, and `Molecule_Generation/UniGEM_DRUG_ft_ckpt`. You are welcome to use these for testing and reproducing our results. Checkpoints for training will be released soon.
 ---
 ## Additional Experiments
 ### Metric consistency
