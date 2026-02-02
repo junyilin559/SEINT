@@ -1,5 +1,7 @@
 # An Efficient SE($p$)-Invariant Transport Metric Driven by Polar Transport Discrepancy-based Representation
-This repository includes the implementation of our work **"An Efficient SE($p$)-Invariant Transport Metric Driven by Polar Transport Discrepancy-based Representation"**
+[![OpenReview](https://img.shields.io/badge/OpenReview-View-blue)](https://openreview.net/forum?id=oyxExc7TEl)
+
+This repository includes the official implementation of **"An Efficient SE($p$)-Invariant Transport Metric Driven by Polar Transport Discrepancy-based Representation"**
 
 ## Introduction
 Brief introduction to directories and files:
