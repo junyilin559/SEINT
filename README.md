@@ -1,7 +1,15 @@
 # An Efficient SE($p$)-Invariant Transport Metric Driven by Polar Transport Discrepancy-based Representation
-[![OpenReview](https://img.shields.io/badge/OpenReview-View-blue)](https://openreview.net/forum?id=oyxExc7TEl)
+<h4 align="center">
+  <a href="https://openreview.net/forum?id=oyxExc7TEl">Openreview</a> | <a href="https://openreview.net/pdf?id=oyxExc7TEl">PDF</a> | <a href="https://iclr.cc/virtual/2026/poster/10007360">ICLR</a> | <a href="https://mp.weixin.qq.com/s/JMUyM_UScUCKwxmcGBlTAQ">WeChat</a>
+</h4>
+
+<p align="center">
+  <img src="figures/seint_implement.jpg" width="50%" alt="SEINT implementation">
+</p>
 
 This repository includes the official implementation of **"An Efficient SE($p$)-Invariant Transport Metric Driven by Polar Transport Discrepancy-based Representation"**
+
+---
 
 ## Introduction
 Brief introduction to directories and files:
@@ -106,20 +114,19 @@ We integrate SEINT as a regularization term into the Point-MAE architecture for 
 4. Follow the original training and evaluation instructions in the Point-MAE repository.
 ---
 
-## Main References
-Hoogeboom Emiel, Satorras Vïctor Garcia, Vignac Clément and Welling Max. "Equivariant diffusion for molecule generation in 3d." International conference on machine learning. PMLR, 2022. [\[Git\]](https://github.com/ehoogeboom/e3_diffusion_for_molecules)
+## Citation
 
-Pang Yatian, Wang Wenxiao, Tay Francis EH, Liu Wei, Tian Yonghong and Yuan Li. "Masked autoencoders for point cloud self-supervised learning." European conference on computer vision. Cham: Springer Nature Switzerland, 2022. [\[Git\]](https://github.com/Pang-Yatian/Point-MAE)
+If you found this repository useful, please cite the following.
 
-Rémi Flamary, Nicolas Courty, Alexandre Gramfort, Mokhtar Z. Alaya, Aurélie Boisbunon, Stanislas Chambon, Laetitia Chapel, Adrien Corenflos, Kilian Fatras, Nemo Fournier, Léo Gautheron, Nathalie T.H. Gayraud, Hicham Janati, Alain Rakotomamonjy, Ievgen Redko, Antoine Rolet, Antony Schutz, Vivien Seguy, Danica J. Sutherland, Romain Tavenard, Alexander Tong, and Titouan Vayer. "POT Python Optimal Transport library." Journal of Machine Learning Research 22(78): 1-8, 2021. [\[Web\]](https://pythonot.github.io/)
-
-Scetbon, Meyer, Gabriel Peyré, and Marco Cuturi. "Linear-time Gromov Wasserstein distances using low rank couplings and costs." International Conference on Machine Learning. PMLR, 2022. [\[Git\]](https://github.com/meyerscetbon/LinearGromov)
-
-Vayer Titouan, Flamary Rémi, Tavenard Romain, Chapel Laetitia and Courty Nicolas. "Sliced Gromov-Wasserstein." NeurIPS 2019-Thirty-third Conference on Neural Information Processing Systems. Vol. 32. 2019. [\[Git\]](https://github.com/tvayer/SGW)
-
-Shikun Feng and Yuyan Ni and Lu yan and Zhi-Ming Ma and Wei-Ying Ma and Yanyan Lan. "UniGEM: A Unified Approach to Generation and Property Prediction for Molecules." The Thirteenth International Conference on Learning Representations. [\[Github\]](https://github.com/fengshikun/UniGEM)
-
-
+```bibtex
+@inproceedings{lin2026seint,
+      title={An Efficient {SE}(p)-Invariant Transport Metric Driven by Polar Transport Discrepancy-based Representation},
+      author={Junyi Lin and Dunyao Xue and Jun Yu and Hongteng Xu and Cheng Meng},
+      booktitle={The Fourteenth International Conference on Learning Representations},
+      year={2026},
+      url={https://openreview.net/forum?id=oyxExc7TEl}
+}
+```
 
 
 
