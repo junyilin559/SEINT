@@ -114,6 +114,21 @@ We integrate SEINT as a regularization term into the Point-MAE architecture for 
 4. Follow the original training and evaluation instructions in the Point-MAE repository.
 ---
 
+## Main References
+Hoogeboom Emiel, Satorras Vïctor Garcia, Vignac Clément and Welling Max. "Equivariant diffusion for molecule generation in 3d." International conference on machine learning. PMLR, 2022. [\[Github\]](https://github.com/ehoogeboom/e3_diffusion_for_molecules)
+
+Pang Yatian, Wang Wenxiao, Tay Francis EH, Liu Wei, Tian Yonghong and Yuan Li. "Masked autoencoders for point cloud self-supervised learning." European conference on computer vision. Cham: Springer Nature Switzerland, 2022. [\[Github\]](https://github.com/Pang-Yatian/Point-MAE)
+
+Rémi Flamary, Nicolas Courty, Alexandre Gramfort, Mokhtar Z. Alaya, Aurélie Boisbunon, Stanislas Chambon, Laetitia Chapel, Adrien Corenflos, Kilian Fatras, Nemo Fournier, Léo Gautheron, Nathalie T.H. Gayraud, Hicham Janati, Alain Rakotomamonjy, Ievgen Redko, Antoine Rolet, Antony Schutz, Vivien Seguy, Danica J. Sutherland, Romain Tavenard, Alexander Tong, and Titouan Vayer. "POT Python Optimal Transport library." Journal of Machine Learning Research 22(78): 1-8, 2021. [\[Web\]](https://pythonot.github.io/)
+
+Scetbon, Meyer, Gabriel Peyré, and Marco Cuturi. "Linear-time Gromov Wasserstein distances using low rank couplings and costs." International Conference on Machine Learning. PMLR, 2022. [\[Github\]](https://github.com/meyerscetbon/LinearGromov)
+
+Vayer Titouan, Flamary Rémi, Tavenard Romain, Chapel Laetitia and Courty Nicolas. "Sliced Gromov-Wasserstein." NeurIPS 2019-Thirty-third Conference on Neural Information Processing Systems. Vol. 32. 2019. [\[Github\]](https://github.com/tvayer/SGW)
+
+Shikun Feng and Yuyan Ni and Lu yan and Zhi-Ming Ma and Wei-Ying Ma and Yanyan Lan. "UniGEM: A Unified Approach to Generation and Property Prediction for Molecules." The Thirteenth International Conference on Learning Representations. [\[Github\]](https://github.com/fengshikun/UniGEM)
+
+---
+
 ## Citation
 
 If you found this repository useful, please cite the following.
